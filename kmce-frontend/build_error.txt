@@ -1,0 +1,246 @@
+﻿[36mvite v8.0.1 [32mbuilding client environment for production...[36m[39m
+[2K
+node.exe : Error: 
+Cannot apply unknown 
+utility class 
+`bg-slate-50`. Are you 
+using CSS modules or 
+similar and missing 
+`@reference`? https://t
+ailwindcss.com/docs/fun
+ctions-and-directives#r
+eference-directive
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Error: Cannot   
+  a...rence-directi    
+ve:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+    at 
+onInvalidCandidate (C:\
+Users\nites\OneDrive\De
+sktop\KMCE_Dietitian\km
+ce-frontend\node_module
+s\tailwindcss\dist\lib.
+js:21:1314)
+    at Ee (C:\Users\nit
+es\OneDrive\Desktop\KMC
+E_Dietitian\kmce-fronte
+nd\node_modules\tailwin
+dcss\dist\lib.js:16:370
+66)
+    at C:\Users\nites\O
+neDrive\Desktop\KMCE_Di
+etitian\kmce-frontend\n
+ode_modules\tailwindcss
+\dist\lib.js:21:355
+    at _r (C:\Users\nit
+es\OneDrive\Desktop\KMC
+E_Dietitian\kmce-fronte
+nd\node_modules\tailwin
+dcss\dist\lib.js:3:1733
+)
+    at I (C:\Users\nite
+s\OneDrive\Desktop\KMCE
+_Dietitian\kmce-fronten
+d\node_modules\tailwind
+css\dist\lib.js:3:1377)
+    at Te (C:\Users\nit
+es\OneDrive\Desktop\KMC
+E_Dietitian\kmce-fronte
+nd\node_modules\tailwin
+dcss\dist\lib.js:21:172
+)
+    at mn (C:\Users\nit
+es\OneDrive\Desktop\KMC
+E_Dietitian\kmce-fronte
+nd\node_modules\tailwin
+dcss\dist\lib.js:38:294
+)
+    at async gn (C:\Use
+rs\nites\OneDrive\Deskt
+op\KMCE_Dietitian\kmce-
+frontend\node_modules\t
+ailwindcss\dist\lib.js:
+38:631)
+    at async Xr (C:\Use
+rs\nites\OneDrive\Deskt
+op\KMCE_Dietitian\kmce-
+frontend\node_modules\@
+tailwindcss\node\dist\i
+ndex.js:10:3416)
+    at async N (C:\User
+s\nites\OneDrive\Deskto
+p\KMCE_Dietitian\kmce-f
+rontend\node_modules\@t
+ailwindcss\postcss\dist
+\index.js:10:3979)
+transforming...Γ£ô 2181 modules transformed.
+[31mΓ£ù[39m Build 
+failed in 605ms
+[31merror during 
+build:
+[31mBuild failed with 
+1 error:
+
+[plugin vite:css] C:/Us
+ers/nites/OneDrive/Desk
+top/KMCE_Dietitian/kmce
+-frontend/src/index.css
+:1:0
+CssSyntaxError: 
+[postcss] tailwindcss: 
+C:/Users/nites/OneDrive
+/Desktop/KMCE_Dietitian
+/kmce-frontend/src/inde
+x.css:1:1: Cannot 
+apply unknown utility 
+class `bg-slate-50`. 
+Are you using CSS 
+modules or similar and 
+missing `@reference`? h
+ttps://tailwindcss.com/
+docs/functions-and-dire
+ctives#reference-direct
+ive
+    at Input.error (C:\
+Users\nites\OneDrive\De
+sktop\KMCE_Dietitian\km
+ce-frontend\node_module
+s\postcss\lib\input.js:
+135:16)
+    at Root.error (C:\U
+sers\nites\OneDrive\Des
+ktop\KMCE_Dietitian\kmc
+e-frontend\node_modules
+\postcss\lib\node.js:14
+6:32)
+    at Object.Once (C:\
+Users\nites\OneDrive\De
+sktop\KMCE_Dietitian\km
+ce-frontend\node_module
+s\@tailwindcss\postcss\
+dist\index.js:10:6913)
+    at async 
+LazyResult.runAsync (C:
+\Users\nites\OneDrive\D
+esktop\KMCE_Dietitian\k
+mce-frontend\node_modul
+es\postcss\lib\lazy-res
+ult.js:293:11)
+    at async 
+runPostCSS (file:///C:/
+Users/nites/OneDrive/De
+sktop/KMCE_Dietitian/km
+ce-frontend/node_module
+s/vite/dist/node/chunks
+/node.js:20932:19)
+    at async 
+compilePostCSS (file://
+/C:/Users/nites/OneDriv
+e/Desktop/KMCE_Dietitia
+n/kmce-frontend/node_mo
+dules/vite/dist/node/ch
+unks/node.js:20916:6)
+    at async 
+compileCSS (file:///C:/
+Users/nites/OneDrive/De
+sktop/KMCE_Dietitian/km
+ce-frontend/node_module
+s/vite/dist/node/chunks
+/node.js:20846:26)
+    at async TransformP
+luginContextImpl.handle
+r (file:///C:/Users/nit
+es/OneDrive/Desktop/KMC
+E_Dietitian/kmce-fronte
+nd/node_modules/vite/di
+st/node/chunks/node.js:
+20362:47)
+    at async plugin (fi
+le:///C:/Users/nites/On
+eDrive/Desktop/KMCE_Die
+titian/kmce-frontend/no
+de_modules/rolldown/dis
+t/shared/bindingify-inp
+ut-options-DoaqRULI.mjs
+:1111:16)
+    at async 
+plugin.<computed> (file
+:///C:/Users/nites/OneD
+rive/Desktop/KMCE_Dieti
+tian/kmce-frontend/node
+_modules/rolldown/dist/
+shared/bindingify-input
+-options-DoaqRULI.mjs:1
+575:12)[31m
+    at aggregateBinding
+ErrorsIntoJsError (file
+:///C:/Users/nites/OneD
+rive/Desktop/KMCE_Dieti
+tian/kmce-frontend/node
+_modules/rolldown/dist/
+shared/error-BO4SlZV_.m
+js:48:18)
+    at 
+unwrapBindingResult (fi
+le:///C:/Users/nites/On
+eDrive/Desktop/KMCE_Die
+titian/kmce-frontend/no
+de_modules/rolldown/dis
+t/shared/error-BO4SlZV_
+.mjs:18:128)
+    at #build (file:///
+C:/Users/nites/OneDrive
+/Desktop/KMCE_Dietitian
+/kmce-frontend/node_mod
+ules/rolldown/dist/shar
+ed/rolldown-build-yQC7K
+N8K.mjs:3311:34)
+    at async 
+buildEnvironment (file:
+///C:/Users/nites/OneDr
+ive/Desktop/KMCE_Dietit
+ian/kmce-frontend/node_
+modules/vite/dist/node/
+chunks/node.js:32817:64
+)
+    at async 
+Object.build (file:///C
+:/Users/nites/OneDrive/
+Desktop/KMCE_Dietitian/
+kmce-frontend/node_modu
+les/vite/dist/node/chun
+ks/node.js:33239:19)
+    at async 
+Object.buildApp (file:/
+//C:/Users/nites/OneDri
+ve/Desktop/KMCE_Dietiti
+an/kmce-frontend/node_m
+odules/vite/dist/node/c
+hunks/node.js:33236:153
+)
+    at async 
+CAC.<anonymous> (file:/
+//C:/Users/nites/OneDri
+ve/Desktop/KMCE_Dietiti
+an/kmce-frontend/node_m
+odules/vite/dist/node/c
+li.js:778:3) {
+  errors: 
+[Getter/Setter]
+}[39m

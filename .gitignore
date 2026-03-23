@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node / React
+node_modules/
+dist/
+.eslintcache
+
+# Large Data (Keep these if you want them on GitHub, but usually best to ignore)
+# If your .npy files are small (<100MB), you can upload them.
