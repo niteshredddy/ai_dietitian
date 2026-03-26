@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+numpy
+opencv-python
+mysql-connector-python
+ultralytics
+sentence-transformers
+scikit-learn
+pymongo[srv]
+pyjwt
+passlib[bcrypt]
+fpdf2

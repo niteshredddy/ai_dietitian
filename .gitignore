@@ -1,13 +1,14 @@
-# Python
-__pycache__/
-*.pyc
-venv/
+# Secrets
 .env
 
-# Node / React
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
 node_modules/
 dist/
-.eslintcache
 
-# Large Data (Keep these if you want them on GitHub, but usually best to ignore)
-# If your .npy files are small (<100MB), you can upload them.
+# System
+.DS_Store
