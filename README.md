@@ -77,8 +77,8 @@
 
 | Method | Endpoint | Auth | Description |
 | :--- | :--- | :---: | :--- |
-| `POST` | `/register` | ❌ | Create new user account |
-| `POST` | `/login` | ❌ | Authenticate and receive JWT token |
+| `POST` | `/register` | ✅ | Create new user account |
+| `POST` | `/login` | ✅ | Authenticate and receive JWT token |
 | `GET` | `/profile` | ✅ | Get user profile (weight, height, age, etc.) |
 | `PUT` | `/profile` | ✅ | Update user profile |
 | `GET` | `/daily-goal` | ✅ | Get calculated TDEE calorie goal |
