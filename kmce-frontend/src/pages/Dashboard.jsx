@@ -16,10 +16,10 @@ const API = 'http://127.0.0.1:8000';
 
 export default function Dashboard() {
   const { authHeader } = useAuth();
-  const [file, setFile]           = useState(null);
-  const [preview, setPreview]     = useState(null);
-  const [data, setData]           = useState(null);
-  const [loading, setLoading]     = useState(false);
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [dailyGoal, setDailyGoal] = useState(2500);
   const [dailyTotal, setDailyTotal] = useState(0);
   const [portionSize, setPortionSize] = useState(1.0);
@@ -36,7 +36,10 @@ export default function Dashboard() {
         if (goalRes.data.daily_goal) setDailyGoal(goalRes.data.daily_goal);
         const todayCals = (mealsRes.data.meals || []).reduce((sum, m) => sum + m.calories, 0);
         setDailyTotal(todayCals);
-      } catch {}
+      } catch (err) {
+        console.error("Failed to load daily progress:", err);
+        toast.error("Could not load daily progress: " + (err.response?.data?.detail || err.message));
+      }
     };
     loadDailyData();
   }, []);
@@ -105,8 +108,8 @@ export default function Dashboard() {
   };
 
   const protein = data?.macros?.protein || 0;
-  const carbs   = data?.macros?.carbs || 0;
-  const fat     = data?.macros?.fat || 0;
+  const carbs = data?.macros?.carbs || 0;
+  const fat = data?.macros?.fat || 0;
 
   const chartData = useMemo(() => ({
     labels: ['Protein', 'Carbs', 'Fat'],
@@ -127,7 +130,7 @@ export default function Dashboard() {
   };
 
   const ringCirc = 2 * Math.PI * 34;
-  const ringPct  = Math.min(dailyTotal / dailyGoal, 1);
+  const ringPct = Math.min(dailyTotal / dailyGoal, 1);
 
   return (
     <main className="main">

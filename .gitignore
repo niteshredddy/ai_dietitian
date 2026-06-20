@@ -12,3 +12,4 @@ dist/
 
 # System
 .DS_Store
+.vs/

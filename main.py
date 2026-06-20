@@ -42,7 +42,7 @@ app.add_middleware(
 pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
 JWT_SECRET = os.getenv("JWT_SECRET", "fallback_secret_key")
 JWT_ALGORITHM = "HS256"
-JWT_EXPIRE_HOURS = 72
+JWT_EXPIRE_HOURS = 600
 security = HTTPBearer()
 
 # ──────────────────────────────────────────────
@@ -64,6 +64,7 @@ except Exception as e:
 # MySQL — FNDDS reference data
 db_config = {
     "host": os.getenv("DB_HOST", "localhost"),
+    "port": int(os.getenv("DB_PORT", 3306)),
     "user": os.getenv("DB_USER", "root"),
     "password": os.getenv("DB_PASSWORD", ""),
     "database": os.getenv("DB_NAME", "ai_dietician_db"),
@@ -72,8 +73,10 @@ db_pool = mysql.connector.pooling.MySQLConnectionPool(
     pool_name="diet_pool", pool_size=5, **db_config
 )
 
+import certifi
+
 # MongoDB Atlas — users, meal logs, analytics
-mongo_client = MongoClient(os.getenv("MONGO_URI"))
+mongo_client = MongoClient(os.getenv("MONGO_URI"), tlsCAFile=certifi.where())
 mongo_db = mongo_client[os.getenv("MONGO_DB_NAME", "nutrivision")]
 users_col = mongo_db["users"]
 profiles_col = mongo_db["profiles"]
@@ -515,10 +518,10 @@ async def search_food(
 # ──────────────────────────────────────────────
 @app.get("/analytics")
 async def get_analytics(
-    range: str = Query("week", regex="^(week|month)$"),
+    time_range: str = Query("week", alias="range", regex="^(week|month)$"),
     user=Depends(get_current_user),
 ):
-    days = 7 if range == "week" else 30
+    days = 7 if time_range == "week" else 30
     since = datetime.now(timezone.utc) - timedelta(days=days)
 
     pipeline = [
@@ -555,7 +558,7 @@ async def get_analytics(
 
     return {
         "status": "success",
-        "range": range,
+        "range": time_range,
         "days": all_days,
         "summary": {
             "total_calories": round(total_cals, 1),
@@ -575,10 +578,10 @@ async def get_analytics(
 @app.get("/export")
 async def export_data(
     format: str = Query("csv", regex="^(csv|pdf)$"),
-    range: str = Query("week", regex="^(week|month)$"),
+    time_range: str = Query("week", alias="range", regex="^(week|month)$"),
     user=Depends(get_current_user),
 ):
-    days = 7 if range == "week" else 30
+    days = 7 if time_range == "week" else 30
     since = datetime.now(timezone.utc) - timedelta(days=days)
     meals = list(meals_col.find(
         {"user_id": user["user_id"], "logged_at": {"$gte": since}}
@@ -599,7 +602,7 @@ async def export_data(
         return StreamingResponse(
             io.BytesIO(output.getvalue().encode()),
             media_type="text/csv",
-            headers={"Content-Disposition": f"attachment; filename=nutrivision_{range}.csv"},
+            headers={"Content-Disposition": f"attachment; filename=nutrivision_{time_range}.csv"},
         )
 
     else:  # PDF
@@ -643,7 +646,7 @@ async def export_data(
         return StreamingResponse(
             io.BytesIO(pdf_bytes),
             media_type="application/pdf",
-            headers={"Content-Disposition": f"attachment; filename=nutrivision_{range}.pdf"},
+            headers={"Content-Disposition": f"attachment; filename=nutrivision_{time_range}.pdf"},
         )
 
 
