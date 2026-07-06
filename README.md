@@ -219,11 +219,11 @@ Create a `.env` file in the project root:
 
 ```env
 # MySQL (FNDDS reference data)
-DB_HOST=your_mysql_host
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=your_password
-DB_NAME=your_database
+DB_NAME=ai_dietitian_db
 
 # MongoDB Atlas (users, meal logs, analytics)
 MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/
@@ -235,6 +235,8 @@ JWT_SECRET=your_secret_key
 # CORS
 CORS_ORIGIN=http://localhost:5173
 ```
+
+> **Note:** If you are using a local MySQL server, you must ensure that you create the database (`CREATE DATABASE ai_dietitian_db;`) and import the FNDDS reference data (`main_food_desc`, `nutrient_values`) into it before analyzing any meals.
 
 ---
 
@@ -249,3 +251,10 @@ Built as a project for **KMCE** (Department of Computer Science).
 ## 📄 License
 
 This project is for academic/educational purposes.
+
+---
+
+## 🛠️ Troubleshooting
+
+- **`[Errno 22] Invalid argument` on Windows during meal analysis:** This typically happens if your MySQL database (e.g., Railway) is paused/sleeping, or if your local MySQL database doesn't exist or isn't running. Ensure your database is active and accepting connections.
+- **Frontend can't connect to backend (`ERR_CONNECTION_REFUSED`):** Make sure the backend has fully finished loading the AI models (YOLO & SentenceTransformers). This takes about 60–90 seconds on startup. Wait for the `Application startup complete` message in the backend terminal before hitting the API.
